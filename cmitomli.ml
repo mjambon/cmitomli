@@ -1,3 +1,5 @@
+let version = "1.0.0"
+
 let cmi_to_mli infile =
   let x = Cmi_format.read_cmi infile in
   let l = x.Cmi_format.cmi_sign in
@@ -8,9 +10,9 @@ let cmi_to_mli infile =
 
 let usage () =
   Printf.eprintf "\
-cmitomli for ocaml %s
+cmitomli %s for ocaml %s
 Usage: cmitomli <file.cmi>\n%!"
-    Sys.ocaml_version
+    version Sys.ocaml_version
 
 let main () =
   match Sys.argv with

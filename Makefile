@@ -14,8 +14,17 @@ endif
 
 .PHONY: install
 install:
-	cp cmitomli $(BINDIR)
+	cp cmitomli $(BINDIR) || cp cmitomli.exe $(BINDIR)
+
+.PHONY: uninstall
+uninstall:
+	rm -f $(BINDIR)/cmitomli $(BINDIR)/cmitomli.exe
+
+.PHONY: reinstall
+reinstall:
+	$(MAKE) uninstall
+	$(MAKE) install
 
 .PHONY: clean
 clean:
-	rm -f *.cm[iox] *.o *~ cmitomli
+	rm -f *.cm[iox] *.o *~ cmitomli *.exe
